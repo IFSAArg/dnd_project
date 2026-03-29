@@ -3,7 +3,7 @@
   background: url(/img/geralt.webp);
   background-size: cover;
   border-radius: 20px;
-  border: 3px solid white;
+  border: 3px solid rgb(54, 38, 33);
   padding: 0.5rem 1rem;
   margin: 0 5px;
   width: 24%;
@@ -24,7 +24,7 @@
     height: 40px;
     border-radius: 50%;
     font-size: 20px;
-    border: 1px solid white;
+    border: 1px solid rgb(54, 38, 33);
 
     &.map__character__health {
       background-color: red;
@@ -39,4 +39,20 @@
     text-align: center;
     cursor: pointer;
   }
+}
+
+.map__characterImg__1 {
+  background: url(/img/characters/character_1/avatar.png) 0 0/cover no-repeat;
+}
+
+.map__characterImg__2 {
+  background: url(/img/characters/character_2/avatar.png) 0 0/cover no-repeat;
+}
+
+.map__characterImg__3 {
+  background: url(/img/characters/character_3/avatar.png) 0 0/cover no-repeat;
+}
+
+.map__characterImg__4 {
+  background: url(/img/characters/character_4/avatar.png) 0 0/cover no-repeat;
 }

@@ -1,7 +1,7 @@
 .map__page {
   padding: 0.3rem;
   width: 100%;
-  height: 95%;
+  height: 92%;
 
   &__characters {
     @include flex-direction-justify(row, space-between);

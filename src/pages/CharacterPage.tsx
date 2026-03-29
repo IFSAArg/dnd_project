@@ -1,4 +1,3 @@
-import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { getCharacter } from '../store/selectors/charactersSelectors'
@@ -15,8 +14,8 @@ const CharacterPage = () => {
   const {name, info, stats, skills, personality, inventory, history} = character
 
   return (
-    <div className='character__page'>
-      <div className="character__img"/>
+    <div className="character__page">
+      <div className={`character__img character__imgId__${character.id}`}/>
       <div className="character__body">
         <h1 className='character__name'>{name}</h1>
         <div className="character__about">

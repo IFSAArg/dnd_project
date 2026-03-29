@@ -1,5 +1,6 @@
 .main__characters {
   @include flex-direction-justify(row, space-between);
+  margin-top: 20px;
   height: 95%;
   align-items: center;
 }

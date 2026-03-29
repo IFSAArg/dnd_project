@@ -1,16 +1,46 @@
 .navbar {
   @include flex-center;
-  width: 100%;
-  height: 50px;
+  width: 65%;
+  height: 65px;
+  margin: 0 auto;
+  padding-top: 5px;
+  background: url('../img/background/viveska_final.png') no-repeat center;
+  background-size: 100% auto;
+  position: relative;
 
   a {
-    font-size: 30px;
+    position: relative;
+    z-index: 1;
+    font-size: 35px;
     margin: 0 30px;
     text-decoration: none;
-    color: white;
-  
+    color: #b87a2a;
+    text-shadow:
+            -1px -1px 0 #3a2a12,
+            1px -1px 0 #3a2a12,
+            -1px 1px 0 #3a2a12,
+            1px 1px 0 #3a2a12;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: #ffd966;
+      text-shadow:
+              -1px -1px 0 #5a3e1a,
+              1px -1px 0 #5a3e1a,
+              -1px 1px 0 #5a3e1a,
+              1px 1px 0 #5a3e1a,
+              0 0 8px rgba(255, 217, 102, 0.6);
+      transform: scale(1.05);
+    }
+
     &:active {
-      color: rgb(149, 238, 170);
+      color: #7d531c;
+      text-shadow:
+              -1px -1px 0 #3a2a12,
+              1px -1px 0 #3a2a12,
+              -1px 1px 0 #3a2a12,
+              1px 1px 0 #3a2a12;
+      transform: translateY(2px);
     }
   }
 }

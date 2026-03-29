@@ -1,9 +1,80 @@
 .card__character {
   @include flex-direction-justify(column, space-between);
-  margin: 0 20px;
-  height: 100%;
+  height: 90%;
+  position: relative;
   width: 300px;
-  background: url(../img/witcher/witcher_medium.png) 0 0/cover;
   padding: 1rem;
+  padding-top: 0;
+  border: 2px solid rgb(48, 33, 29);
   border-radius: 20px;
+  background-position: 50% 30%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: visible;
+
+  &:hover {
+    box-shadow: inset 0 5px 15px rgba(123, 100, 78, 0.5);
+    transform: scale(1.01);
+    cursor: pointer;
+  }
+}
+
+// Лента (выступает сверху и по бокам)
+.card__character__ribbon {
+  position: absolute;
+  top: -70px; // увеличиваем выступ сверху
+  left: -62px; // увеличиваем выступ слева (шире)
+  right: -62px; // увеличиваем выступ справа (шире)
+  background: url('../img/svitok1.png') no-repeat center/100% 100%;
+  height: 160px; // в 2 раза больше (было 80px)
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+
+  .card__character__name {
+    font-family: 'CC Yuletide Log', 'Cinzel', serif;
+    font-weight: bold;
+    font-size: 1.5rem; // чуть увеличим шрифт под большую ленту
+    color: #472818;
+    //text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7);
+    text-align: center;
+    padding: 0 15px;
+    white-space: nowrap;
+    position: relative;
+    top: -15px; // поднимаем на 12px выше (можно менять 10-15px)
+    transform: rotate(-8deg); // поворот против часовой на 8 градусов (можно менять 5-10deg)
+    display: inline-block; // чтобы transform корректно работал
+  }
+}
+
+// Контент карточки
+.card__character__content {
+  margin-top: auto; // увеличиваем отступ, чтобы контент не наезжал на ленту
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px;
+  border-radius: 12px;
+  position: relative;
+  z-index: 1;
+
+  div {
+    margin: 5px 0;
+  }
+}
+
+// Фоны персонажей
+.character__id-1 {
+  background: url("../img/characters/character_1/full_body.png") 50% 30%/cover no-repeat;
+}
+
+.character__id-2 {
+  background: url("../img/characters/character_2/full_body.png") 50% 30%/cover no-repeat;
+}
+
+.character__id-3 {
+  background: url("../img/characters/character_3/full_body.png") 50% 30%/cover no-repeat;
+}
+
+.character__id-4 {
+  background: url("../img/characters/character_4/full_body.png") 50% 30%/cover no-repeat;
 }

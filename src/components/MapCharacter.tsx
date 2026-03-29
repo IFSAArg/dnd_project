@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import { memo } from 'react'
 import { ICharacter } from '../types/characterTypes';
 import { useNavigate} from 'react-router-dom';
 import MyInfoCounter from './UI/MyCounter/MyInfoCounter';
@@ -22,7 +22,7 @@ const MapCharacter = (props: MapCharacterProps) => {
   }
 
   return (
-        <div className="map__character">
+        <div className={`map__character map__characterImg__${id}`}>
           <div className="map__character__block">
             <div className="map__character__block__stats">
               <div className="map__character__health">{charHealth}</div>

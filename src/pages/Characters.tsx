@@ -4,7 +4,7 @@ import { getArrayFromLocalStorage, LOCAL_STORAGE_KEYS } from '../helpers/lib/loc
 import { useGetCharacters } from '../store/services/characterApi'
 import { setCharactersData } from '../store/slices/charactersSlice'
 import MyLoader, { MY_LOADER_TYPE } from '../components/UI/MyLoader/MyLoader'
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 
 const Characters = () => {
   const dispatch = useAppDispatch()

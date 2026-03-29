@@ -3,9 +3,21 @@
   height: 95%;
 
   .character__img {
-    background: url(../img/witcher/witcher_large.png) 0 0/cover no-repeat;
-    height: 100%;
-    width: 34%;
+    height: 95%;
+    width: 30%;
+  }
+
+  .character__imgId__1 {
+    background: url("../img/characters/character_1/full_body.png") 50% 0/cover no-repeat;
+  }
+  .character__imgId__2 {
+    background: url("../img/characters/character_2/full_body.png") 50% 0/cover no-repeat;
+  }
+  .character__imgId__3 {
+    background: url("../img/characters/character_3/full_body.png") 50% 0/cover no-repeat;
+  }
+  .character__imgId__4 {
+    background: url("../img/characters/character_4/full_body.png") 50% 0/cover no-repeat;
   }
 
   .character__body {

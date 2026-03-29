@@ -2,19 +2,19 @@
   "characters": [
     {
       "id": "1",
-      "name": "Софьян",
+      "name": "Ковролин",
       "info": [
         {
           "name": "Здоровье",
-          "count": "14"
+          "count": "7"
         },
         {
           "name": "Броня",
-          "count": "11"
+          "count": "9"
         },
         {
           "name": "Класс",
-          "count": "мечник"
+          "count": "плут"
         },
         {
           "name": "Раса",
@@ -94,15 +94,15 @@
     },
     {
       "id": "2",
-      "name": "Йенифэр",
+      "name": "Гатс",
       "info": [
         {
           "name": "Здоровье",
-          "count": "8"
+          "count": "10"
         },
         {
           "name": "Броня",
-          "count": "24"
+          "count": "12"
         },
         {
           "name": "Класс",
@@ -190,15 +190,15 @@
     },
     {
       "id": "3",
-      "name": "Софийнис",
+      "name": "Укулиля",
       "info": [
         {
           "name": "Здоровье",
-          "count": "13"
+          "count": "7"
         },
         {
           "name": "Броня",
-          "count": "12"
+          "count": "14"
         },
         {
           "name": "Класс",
@@ -282,11 +282,11 @@
     },
     {
       "id": "4",
-      "name": "Геральт из Ривии",
+      "name": "Микроволновка",
       "info": [
         {
           "name": "Здоровье",
-          "count": "16"
+          "count": "14"
         },
         {
           "name": "Броня",
@@ -379,6 +379,24 @@
       "name": "mjj",
       "color": "red",
       "size": "extra_large"
+    },
+    {
+      "id": "7fd87ee2-6b6b-4275-ae56-03da8b26cef7",
+      "name": "1",
+      "color": "green",
+      "size": "small"
+    },
+    {
+      "id": "3d6a7eee-86a3-4c0a-b11d-c67b884ccf5e",
+      "name": "2",
+      "color": "green",
+      "size": "small"
+    },
+    {
+      "id": "2a7d2d15-8d86-46c1-8c68-665c1e4aba73",
+      "name": "o;kj",
+      "color": "blue",
+      "size": "large"
     }
   ],
   "locations": [
