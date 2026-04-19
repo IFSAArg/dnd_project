@@ -1,19 +1,25 @@
 .map__page {
+  display: flex;
   padding: 0.3rem;
   width: 100%;
-  height: 92%;
+  height: 100%;
 
   &__characters {
-    @include flex-direction-justify(row, space-between);
-    width: 100%;
-    height: 20%;
+    @include flex-direction-justify(column, space-between);
+    width: 20%;
+    height: 90%;
     min-height: 15%;
     margin-bottom: 5px;
   }
+}
+
+.buttons__and__map {
+  width: 100%;
+  height: 100%;
 
   &__buttons {
     display: flex;
-    
+
     &__switch {
       display: flex;
       width: 50%;
@@ -21,8 +27,9 @@
   }
 
   &__main {
-    margin: 5px 0;
-    height: 78%;
+    margin: 0 0;
+    width: 100%;
+    height: 90%;
     background: url(../img/map__castle1.png) center/contain no-repeat;
     border: 5px solid rgb(54, 38, 33);
   }

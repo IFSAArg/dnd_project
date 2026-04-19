@@ -29,9 +29,9 @@ const MapCharacter = (props: MapCharacterProps) => {
               <MyInfoCounter character={props.character} type={CHARACTER_INFO_TYPE.HEALTH}/>
             </div>
             <div className="map__character__block__stats">
-              <MyInfoCounter character={props.character} type={CHARACTER_INFO_TYPE.ARMOR}/>
               <div className="map__character__armor">{charArmor}</div>
-            </div> 
+              <MyInfoCounter character={props.character} type={CHARACTER_INFO_TYPE.ARMOR}/>
+            </div>
           </div>
           <div 
             className="map__character__name pointer"

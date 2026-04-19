@@ -6,11 +6,11 @@
       "info": [
         {
           "name": "Здоровье",
-          "count": "7"
+          "count": "15"
         },
         {
           "name": "Броня",
-          "count": "9"
+          "count": "14"
         },
         {
           "name": "Класс",
@@ -98,11 +98,11 @@
       "info": [
         {
           "name": "Здоровье",
-          "count": "10"
+          "count": "8"
         },
         {
           "name": "Броня",
-          "count": "12"
+          "count": "18"
         },
         {
           "name": "Класс",
@@ -194,7 +194,7 @@
       "info": [
         {
           "name": "Здоровье",
-          "count": "7"
+          "count": "11"
         },
         {
           "name": "Броня",
@@ -290,7 +290,7 @@
         },
         {
           "name": "Броня",
-          "count": "9"
+          "count": "14"
         },
         {
           "name": "Класс",
@@ -375,45 +375,27 @@
   ],
   "mapMarkers": [
     {
-      "id": "c3262c5d-57a9-4200-a81d-3b4a0db2d6d6",
-      "name": "mjj",
-      "color": "red",
-      "size": "extra_large"
-    },
-    {
-      "id": "7fd87ee2-6b6b-4275-ae56-03da8b26cef7",
-      "name": "1",
+      "id": "c3d2b3bc-a790-4243-b1be-3bc2b9d890e5",
+      "name": "21",
       "color": "green",
       "size": "small"
-    },
-    {
-      "id": "3d6a7eee-86a3-4c0a-b11d-c67b884ccf5e",
-      "name": "2",
-      "color": "green",
-      "size": "small"
-    },
-    {
-      "id": "2a7d2d15-8d86-46c1-8c68-665c1e4aba73",
-      "name": "o;kj",
-      "color": "blue",
-      "size": "large"
     }
   ],
   "locations": [
     {
       "id": "1",
-      "name": "Храм",
-      "url": "https://img1.reactor.cc/pics/comment/full/Dungeons-%26-Dragons-%D0%BD%D1%80%D0%B8-%D0%BD%D0%B0%D1%80%D0%B8%D1%81%D0%BE%D0%B2%D0%B0%D0%BB-%D1%81%D0%B0%D0%BC-Pathfinder-4077867.jpeg"
+      "name": "Лагерь",
+      "url": "img/locations/camp_full.png"
     },
     {
       "id": "2",
-      "name": "Поле битвы",
-      "url": "https://i.pinimg.com/originals/de/f1/cb/def1cb37bf10c07bd8dd1149632ec8ea.jpg"
+      "name": "Лагерь с цифрами",
+      "url": "img/locations/camp_full.png"
     },
     {
       "id": "3",
-      "name": "Дерево",
-      "url": "https://i.pinimg.com/originals/46/3e/df/463edf695f0505ee615ff543d2c373ce.png"
+      "name": "Шатёр лорда Кариана",
+      "url": "img/locations/karian.png"
     }
   ]
 }
