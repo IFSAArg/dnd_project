@@ -43,7 +43,7 @@ const GameMap = () => {
 
   const locationImage = {
       backgroundImage: `url(${locations[locationNumber]?.url})`,
-      backgroundSize: 'cover',
+      backgroundSize: 'contain',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
   }
@@ -86,27 +86,32 @@ const GameMap = () => {
           ))
         }
       </div>
-      <div className="map__page__buttons">
-        <div className='map__page__buttons__switch'>
-          <MyButton disabled={isBackButtonDisabled} size={BUTTON_SIZE_TYPE.M} theme={BUTTON_THEME_TYPE.DEFAULT} onClick={() => handleBackSwitchLocation()} width={BUTTON_WIDTH_TYPE.FULL}>Назад</MyButton>
-          <MyButton disabled={isForwardButtonDisabled} size={BUTTON_SIZE_TYPE.M} theme={BUTTON_THEME_TYPE.DEFAULT} onClick={() => handleForwardSwitchLocation()} width={BUTTON_WIDTH_TYPE.FULL}>Вперёд</MyButton>
+      <div className="buttons__and__map">
+        <div className="buttons__and__map__buttons">
+          <div className='buttons__and__map__buttons__switch'>
+            <MyButton disabled={isBackButtonDisabled} size={BUTTON_SIZE_TYPE.M} theme={BUTTON_THEME_TYPE.DEFAULT} onClick={() => handleBackSwitchLocation()} width={BUTTON_WIDTH_TYPE.FULL}>Назад</MyButton>
+            <MyButton disabled={isForwardButtonDisabled} size={BUTTON_SIZE_TYPE.M} theme={BUTTON_THEME_TYPE.DEFAULT} onClick={() => handleForwardSwitchLocation()} width={BUTTON_WIDTH_TYPE.FULL}>Вперёд</MyButton>
+          </div>
+          <MyButton size={BUTTON_SIZE_TYPE.M} theme={BUTTON_THEME_TYPE.DEFAULT} onClick={addNewPlayerMarker} width={BUTTON_WIDTH_TYPE.FULL}>Добавить Маркер</MyButton>
         </div>
-        <MyButton size={BUTTON_SIZE_TYPE.M} theme={BUTTON_THEME_TYPE.DEFAULT} onClick={addNewPlayerMarker} width={BUTTON_WIDTH_TYPE.FULL}>Добавить Маркер</MyButton>
+
+        <div className={classNames("buttons__and__map__main")} style={locationImage} onClick={handleCloseAllModals}>
+          { isLocationLoading
+            ? <MyLoader type={MY_LOADER_TYPE.IMAGE}/>
+            : markers?.map((marker, index) => (
+                <MyMapMarker
+                  key={marker.id}
+                  id={marker.id}
+                  index={index+1}
+                  name={marker.name}
+                  color={marker.color}
+                  size={marker.size}
+                />
+          ))}
+        </div>
       </div>
-      <div className={classNames("map__page__main")} style={locationImage} onClick={handleCloseAllModals}>
-        { isLocationLoading 
-          ? <MyLoader type={MY_LOADER_TYPE.IMAGE}/>
-          : markers?.map((marker, index) => (
-              <MyMapMarker 
-                key={marker.id}
-                id={marker.id} 
-                index={index+1}
-                name={marker.name} 
-                color={marker.color} 
-                size={marker.size}
-              />
-        ))}
-      </div>
+
+
       {markers?.map(marker => (
         <MyModal
           key={`markerMenu_${marker.id}`}
@@ -123,6 +128,7 @@ const GameMap = () => {
           </MyButton>
         </MyModal>
       ))}
+
       <MyModal size={MODAL_SIZE_TYPE.FULL_SCREEN} id={MODAL_CONTENT_TYPE.MARKER_FORM}>
         <CharacterMarkerForm/>
       </MyModal>
