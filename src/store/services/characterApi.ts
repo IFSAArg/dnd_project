@@ -1,5 +1,5 @@
 import { ICharacter } from '../../types/characterTypes.js';
-import {rtkApi} from "../../API/rtkApi.js";
+import {rtkApi} from "../../API/rtkApi.ts";
 
 const charactersApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({

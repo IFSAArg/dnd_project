@@ -1,9 +1,9 @@
-import React, {useState} from 'react'
+import {ChangeEvent, FormEvent, useState} from 'react'
 import MyInput from './UI/MyInput/MyInput'
 import MySelect from './UI/MySelect/MySelect'
 import MyButton, {BUTTON_SIZE_TYPE, BUTTON_THEME_TYPE, BUTTON_WIDTH_TYPE} from './UI/MyButton/MyButton'
 import {
-  IMarkerState,
+  IMarkerState, MARKER_CHARACTER_TYPE,
   MARKER_COLOR_TYPE,
   MARKER_SIZE_TYPE,
   markerColorOptions,
@@ -21,28 +21,28 @@ const CharacterMarkerForm = () => {
   const emptyMarkerState: IMarkerState = {id: "", name: "", color: MARKER_COLOR_TYPE.EMPTY, size: MARKER_SIZE_TYPE.EMPTY}
   const [markerState, setMarkerState] = useState<IMarkerState>(emptyMarkerState)
 
-  const changeMarkerName = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const changeMarkerName = (event: ChangeEvent<HTMLInputElement>) => {
     setMarkerState(prevState => ({
       ...prevState, 
       name: event.target.value,
     }))
   }
 
-  const changeMarkerColor = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const changeMarkerColor = (event: ChangeEvent<HTMLSelectElement>) => {
     setMarkerState(prevState => ({
       ...prevState, 
-      color: event.target.value,
+      color: event.target.value as MARKER_COLOR_TYPE | MARKER_CHARACTER_TYPE,
     }))
   }
 
-  const changeMarkerSize = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const changeMarkerSize = (event: ChangeEvent<HTMLSelectElement>) => {
     setMarkerState(prevState => ({
       ...prevState, 
-      size: event.target.value,
+      size: event.target.value as MARKER_SIZE_TYPE,
     }))
   }
 
-  const addNewMarker = (event: React.FormEvent<HTMLButtonElement>) => {
+  const addNewMarker = (event: FormEvent<HTMLButtonElement>) => {
     event.preventDefault()
 
     if ( !markerState.color || !markerState.size) {

@@ -8,7 +8,7 @@ import { useGetLocations } from '../store/services/locationsApi'
 import { setCharactersData } from '../store/slices/charactersSlice'
 import { deleteMapMarker, setMapMarkersData } from '../store/slices/mapMarkersSlice'
 import { closeAllModals, closeModal, openModal } from '../store/slices/modalSlice'
-import MyButton, { BUTTON_WIDTH_TYPE, BUTTON_THEME_TYPE, BUTTON_SIZE_TYPE, IButtonDisabledFlag  } from '../components/UI/MyButton/MyButton'
+import MyButton, { BUTTON_WIDTH_TYPE, BUTTON_THEME_TYPE, BUTTON_SIZE_TYPE  } from '../components/UI/MyButton/MyButton'
 import MyModal, { MODAL_CONTENT_TYPE, MODAL_SIZE_TYPE } from '../components/UI/MyModal/MyModal'
 import MyMapMarker from '../components/UI/MyMapMarker/MyMapMarker'
 import MapCharacter from '../components/MapCharacter'
@@ -21,7 +21,7 @@ const GameMap = () => {
   const isLocalCharsData = getArrayFromLocalStorage(LOCAL_STORAGE_KEYS.CHARS)
   const isLocalMarkersData = getArrayFromLocalStorage(LOCAL_STORAGE_KEYS.MARKERS)
   const {data: characters, isLoading: isCharactersLoading} = useGetCharacters(null)
-  const {data: markers, isLoading: isMarkersLoading} = useGetMarkers(null)
+  const {data: markers} = useGetMarkers(null)
   const {data: locations = [], isLoading: isLocationLoading} = useGetLocations(null)
   const [locationNumber, setLocationNumber] = useState<number>(0)
 
@@ -81,8 +81,8 @@ const GameMap = () => {
         {isCharactersLoading 
           ? <MyLoader type={MY_LOADER_TYPE.CHARACTERS}/>
           : characters?.map(character => (
-            <div className="map__page__character">
-              <MapCharacter key={character.id} character={character}/>
+            <div className="map__page__character" key={character.id}>
+              <MapCharacter  character={character}/>
             </div>
           ))
         }
