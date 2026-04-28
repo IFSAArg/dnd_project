@@ -12,7 +12,8 @@
 }
 
 body {
-  background-image: url(../img/background.jpg);
+  background: url(../img/background.jpg) no-repeat center center;
+  background-size: cover;
   font-family: 'CC Yuletide Log', 'Cinzel', 'Georgia', serif;
   font-weight: bold;
 }
@@ -20,10 +21,8 @@ body {
 #root {
   display: flex;
   flex-direction: column;
-  max-width: 1920px;
   align-items: center;
   justify-content: center;
-
 }
 
 .App {

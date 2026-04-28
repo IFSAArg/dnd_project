@@ -6,7 +6,7 @@
       "info": [
         {
           "name": "Здоровье",
-          "count": "15"
+          "count": "22"
         },
         {
           "name": "Броня",
@@ -98,11 +98,11 @@
       "info": [
         {
           "name": "Здоровье",
-          "count": "8"
+          "count": "32"
         },
         {
           "name": "Броня",
-          "count": "18"
+          "count": "17"
         },
         {
           "name": "Класс",
@@ -194,7 +194,7 @@
       "info": [
         {
           "name": "Здоровье",
-          "count": "11"
+          "count": "17"
         },
         {
           "name": "Броня",
@@ -286,7 +286,7 @@
       "info": [
         {
           "name": "Здоровье",
-          "count": "14"
+          "count": "22"
         },
         {
           "name": "Броня",
@@ -375,10 +375,28 @@
   ],
   "mapMarkers": [
     {
-      "id": "c3d2b3bc-a790-4243-b1be-3bc2b9d890e5",
-      "name": "21",
-      "color": "green",
-      "size": "small"
+      "id": "6f8bb159-198d-452e-a79a-365ab1a4f10a",
+      "name": "",
+      "color": "kovrolin",
+      "size": "medium"
+    },
+    {
+      "id": "7bd0c9d6-59e7-41bc-861e-24b08719cd91",
+      "name": "",
+      "color": "gats",
+      "size": "medium"
+    },
+    {
+      "id": "50a5ebf6-32f9-4113-81ee-88deab5f96c7",
+      "name": "",
+      "color": "ukulilya",
+      "size": "medium"
+    },
+    {
+      "id": "694fc38a-ea76-4df3-941b-e8f5b61d7f25",
+      "name": "",
+      "color": "microwave",
+      "size": "medium"
     }
   ],
   "locations": [

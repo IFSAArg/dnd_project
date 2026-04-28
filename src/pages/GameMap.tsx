@@ -75,24 +75,47 @@ const GameMap = () => {
     dispatch(closeModal(MODAL_CONTENT_TYPE.MARKER_MENU))
   }
 
-
   return (
     <div className='map__page'>
       <div className="map__page__characters">
         {isCharactersLoading 
           ? <MyLoader type={MY_LOADER_TYPE.CHARACTERS}/>
           : characters?.map(character => (
-            <MapCharacter key={character.id} character={character}/>
+            <div className="map__page__character">
+              <MapCharacter key={character.id} character={character}/>
+            </div>
           ))
         }
       </div>
       <div className="buttons__and__map">
         <div className="buttons__and__map__buttons">
           <div className='buttons__and__map__buttons__switch'>
-            <MyButton disabled={isBackButtonDisabled} size={BUTTON_SIZE_TYPE.M} theme={BUTTON_THEME_TYPE.DEFAULT} onClick={() => handleBackSwitchLocation()} width={BUTTON_WIDTH_TYPE.FULL}>Назад</MyButton>
-            <MyButton disabled={isForwardButtonDisabled} size={BUTTON_SIZE_TYPE.M} theme={BUTTON_THEME_TYPE.DEFAULT} onClick={() => handleForwardSwitchLocation()} width={BUTTON_WIDTH_TYPE.FULL}>Вперёд</MyButton>
+            <MyButton
+              disabled={isBackButtonDisabled}
+              size={BUTTON_SIZE_TYPE.M} theme={BUTTON_THEME_TYPE.DEFAULT}
+              onClick={() => handleBackSwitchLocation()}
+              width={BUTTON_WIDTH_TYPE.FULL}
+            >
+              Назад
+            </MyButton>
+            <MyButton
+              disabled={isForwardButtonDisabled}
+              size={BUTTON_SIZE_TYPE.M}
+              theme={BUTTON_THEME_TYPE.DEFAULT}
+              onClick={() => handleForwardSwitchLocation()}
+              width={BUTTON_WIDTH_TYPE.FULL}
+            >
+              Вперёд
+            </MyButton>
           </div>
-          <MyButton size={BUTTON_SIZE_TYPE.M} theme={BUTTON_THEME_TYPE.DEFAULT} onClick={addNewPlayerMarker} width={BUTTON_WIDTH_TYPE.FULL}>Добавить Маркер</MyButton>
+          <MyButton
+            size={BUTTON_SIZE_TYPE.M}
+            theme={BUTTON_THEME_TYPE.DEFAULT}
+            onClick={addNewPlayerMarker}
+            width={BUTTON_WIDTH_TYPE.FULL}
+          >
+            Добавить Маркер
+          </MyButton>
         </div>
 
         <div className={classNames("buttons__and__map__main")} style={locationImage} onClick={handleCloseAllModals}>
@@ -110,7 +133,6 @@ const GameMap = () => {
           ))}
         </div>
       </div>
-
 
       {markers?.map(marker => (
         <MyModal
