@@ -6,7 +6,7 @@
 }
 
 .myMapMarker {
-  border: 1px solid black;
+  border: 1px ridge #eee283;
   border-radius: 50%;
   width: 50px;
   height: 50px;
@@ -27,6 +27,74 @@
 
 .blue {
   background-color: #212192;
+}
+
+.yellow {
+  background-color: #ffbd11;
+}
+
+.orange {
+  background-color: #c76414;
+}
+
+.purple {
+  background-color: #5e2d92;
+}
+// ------------------------
+
+// ---------Игроки---------
+.kovrolin {
+  background: url(/img/characters/character_1/avatar.png) 50% 0/cover no-repeat;
+}
+
+.gats {
+  background: url(/img/characters/character_2/avatar.png) 50% 0/cover no-repeat;
+}
+
+.ukulilya {
+  background: url(/img/characters/character_3/avatar.png) 50% 0/cover no-repeat;
+}
+
+.microwave {
+  background: url(/img/characters/character_4/avatar.png) 50% 0/cover no-repeat;
+}
+// ------------------------
+
+// ---------NPC---------
+.karian {
+  background: url(/img/characters/karian/avatar.png) 0 0/cover no-repeat;
+}
+
+.volmus {
+  background: url(/img/characters/volmus/avatar.png) 0 0/cover no-repeat;
+}
+
+.terael {
+  background: url(/img/characters/terael/avatar.png) 0 0/cover no-repeat;
+}
+
+.twin {
+  background: url(/img/characters/twin/avatar.png) 0 0/cover no-repeat;
+}
+
+.guardian {
+  background: url(/img/characters/guardian/avatar.png) 0 0/cover no-repeat;
+}
+
+.officer {
+  background: url(/img/characters/officer/avatar.png) 0 0/cover no-repeat;
+}
+
+.crossbowman {
+  background: url(/img/characters/crossbowman/avatar.png) 0 0/cover no-repeat;
+}
+
+.gorgus {
+  background: url(/img/characters/gorgus/avatar.png) 0 0/cover no-repeat;
+}
+
+.gruz {
+  background: url(/img/characters/gruz/avatar.png) 0 0/cover no-repeat;
 }
 // ------------------------
 

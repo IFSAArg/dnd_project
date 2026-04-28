@@ -7,7 +7,7 @@ const Navbar = () => {
         <Link to={'characters'}>Персонажи</Link>
         <Link to={'map'}>Карта</Link>
         <Link to={'characters'}>Помощь</Link>
-        <Link to={'characters'}>Авторы</Link>
+        <Link to={'kingdom'}>Йоркшин</Link>
     </div>
   )
 }
