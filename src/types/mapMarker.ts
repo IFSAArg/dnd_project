@@ -42,6 +42,9 @@ export interface IMarkerState {
   name: string,
   color: MARKER_COLOR_TYPE | MARKER_CHARACTER_TYPE,
   size: MARKER_SIZE_TYPE,
+  x: number,
+  y: number,
+  locationId: string
 }
 
 export const markerColorOptions = [

@@ -8,14 +8,16 @@ import { MARKER_SIZE_TYPE } from '../../../types/mapMarker';
 
 interface IMyMapMarkerProps {
   id: string;
-  index: number;
   name: string;
   color: string;
   size: string;
+  x: number;
+  y: number;
+  onDragStop: (id: string, x: number, y: number) => void;
 }
 
 const MyMapMarker = (props: IMyMapMarkerProps) => {
-  const {id, name, color, size, index} = props
+  const {id, name, color, size, x, y, onDragStop} = props
   const dispatch = useAppDispatch()
   const markerRndSize = getMarkerRndSize(size)
   
@@ -42,14 +44,19 @@ const MyMapMarker = (props: IMyMapMarkerProps) => {
   if (!markerRndSize) return null
 
   return (
-    <Rnd 
+    <Rnd
       bounds="parent"
       enableResizing={false}
-      default={{
-        x: 0,
-        y: index*50,
+      size={{
         width: markerRndSize,
         height: markerRndSize,
+      }}
+      position={{
+        x,
+        y,
+      }}
+      onDragStop={(e, d) => {
+        onDragStop(id, d.x, d.y)
       }}
     >
       <div 

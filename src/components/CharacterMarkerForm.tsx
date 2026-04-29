@@ -1,4 +1,4 @@
-import {ChangeEvent, FormEvent, useState} from 'react'
+import {ChangeEvent, FC, FormEvent, useState} from 'react'
 import MyInput from './UI/MyInput/MyInput'
 import MySelect from './UI/MySelect/MySelect'
 import MyButton, {BUTTON_SIZE_TYPE, BUTTON_THEME_TYPE, BUTTON_WIDTH_TYPE} from './UI/MyButton/MyButton'
@@ -15,10 +15,14 @@ import {useAddMarker} from '../store/services/mapMarkersApi'
 import {addMapMarker} from '../store/slices/mapMarkersSlice'
 import toastr from '../helpers/constants/toasterConfig'
 
-const CharacterMarkerForm = () => {
+interface CharacterMarkerFormProps {
+  locationId: string,
+}
+
+const CharacterMarkerForm: FC<CharacterMarkerFormProps> = ({locationId}) => {
   const dispatch = useAppDispatch()
   const [addMarker] = useAddMarker()
-  const emptyMarkerState: IMarkerState = {id: "", name: "", color: MARKER_COLOR_TYPE.EMPTY, size: MARKER_SIZE_TYPE.EMPTY}
+  const emptyMarkerState: IMarkerState = {id: "", name: "", color: MARKER_COLOR_TYPE.EMPTY, size: MARKER_SIZE_TYPE.EMPTY, x: 0, y: 0, locationId: "0"}
   const [markerState, setMarkerState] = useState<IMarkerState>(emptyMarkerState)
 
   const changeMarkerName = (event: ChangeEvent<HTMLInputElement>) => {
@@ -53,6 +57,9 @@ const CharacterMarkerForm = () => {
     const newMarker = {
       ...markerState,
       id: uuidv4(),
+      x: 50,
+      y: 50,
+      locationId
     }
 
     addMarker(newMarker)

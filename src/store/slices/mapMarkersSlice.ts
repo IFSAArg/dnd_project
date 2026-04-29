@@ -27,10 +27,20 @@ const mapMarkerSlice = createSlice({
 
       state.mapMarkers = newMapMarkersData
       saveArrayToLocalStorage(LOCAL_STORAGE_KEYS.MARKERS, newMapMarkersData)
+    },
+    updateMarkerPosition: (state, action: PayloadAction<{ id: string; x: number; y: number }>) => {
+      const marker = state.mapMarkers.find(m => m.id === action.payload.id)
+
+      if (marker) {
+        marker.x = action.payload.x
+        marker.y = action.payload.y
+      }
+
+      saveArrayToLocalStorage(LOCAL_STORAGE_KEYS.MARKERS, state.mapMarkers)
     }
   }
 })
 
-export const { setMapMarkersData, addMapMarker, deleteMapMarker} = mapMarkerSlice.actions
+export const { setMapMarkersData, addMapMarker, deleteMapMarker, updateMarkerPosition} = mapMarkerSlice.actions
 
 export default mapMarkerSlice.reducer
