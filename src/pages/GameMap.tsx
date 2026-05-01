@@ -1,29 +1,36 @@
-import { useEffect, useState } from 'react'
+import {useEffect, useMemo, useState} from 'react'
 import classNames from 'classnames'
 import { useAppDispatch } from '../helpers/hooks/useAppDispatch/useAppDispatch'
 import { getArrayFromLocalStorage, LOCAL_STORAGE_KEYS } from '../helpers/lib/localStorage'
 import { useGetCharacters } from '../store/services/characterApi'
-import { useDeleteMarker, useGetMarkers } from '../store/services/mapMarkersApi'
+import {useDeleteMarker, useGetMarkers, useUpdatePositionMarker} from '../store/services/mapMarkersApi'
 import { useGetLocations } from '../store/services/locationsApi'
 import { setCharactersData } from '../store/slices/charactersSlice'
-import { deleteMapMarker, setMapMarkersData } from '../store/slices/mapMarkersSlice'
+import {deleteMapMarker, setMapMarkersData, updateMarkerPosition} from '../store/slices/mapMarkersSlice'
 import { closeAllModals, closeModal, openModal } from '../store/slices/modalSlice'
-import MyButton, { BUTTON_WIDTH_TYPE, BUTTON_THEME_TYPE, BUTTON_SIZE_TYPE, IButtonDisabledFlag  } from '../components/UI/MyButton/MyButton'
+import MyButton, { BUTTON_WIDTH_TYPE, BUTTON_THEME_TYPE, BUTTON_SIZE_TYPE  } from '../components/UI/MyButton/MyButton'
 import MyModal, { MODAL_CONTENT_TYPE, MODAL_SIZE_TYPE } from '../components/UI/MyModal/MyModal'
 import MyMapMarker from '../components/UI/MyMapMarker/MyMapMarker'
 import MapCharacter from '../components/MapCharacter'
 import MyLoader, { MY_LOADER_TYPE } from '../components/UI/MyLoader/MyLoader'
 import CharacterMarkerForm from '../components/CharacterMarkerForm'
+import {getAllMarkers} from "../store/selectors/mapMarkerSelectors.ts";
+import {useSelector} from "react-redux";
+import DicePanel from "../components/DicePanel.tsx";
 
 const GameMap = () => {
   const dispatch = useAppDispatch()
   const [deleteMarker] = useDeleteMarker()
+  const [updateMarker] = useUpdatePositionMarker()
   const isLocalCharsData = getArrayFromLocalStorage(LOCAL_STORAGE_KEYS.CHARS)
   const isLocalMarkersData = getArrayFromLocalStorage(LOCAL_STORAGE_KEYS.MARKERS)
+  const markers = useSelector(getAllMarkers)
   const {data: characters, isLoading: isCharactersLoading} = useGetCharacters(null)
-  const {data: markers, isLoading: isMarkersLoading} = useGetMarkers(null)
+  const {data: markersFromApi} = useGetMarkers(null)
   const {data: locations = [], isLoading: isLocationLoading} = useGetLocations(null)
   const [locationNumber, setLocationNumber] = useState<number>(0)
+  const currentLocation = locations?.[locationNumber]
+
 
   useEffect(() => {
     if (!isLocalCharsData && characters) {
@@ -34,15 +41,23 @@ const GameMap = () => {
   }, [dispatch, characters])
 
   useEffect(() => {
-    if (!isLocalMarkersData && markers) {
-      dispatch(setMapMarkersData(markers))
+    if (!isLocalMarkersData && markersFromApi) {
+      dispatch(setMapMarkersData(markersFromApi))
     } else {
       dispatch(setMapMarkersData(isLocalMarkersData))
     }
-  }, [dispatch, markers])
+  }, [dispatch, markersFromApi])
+
+  const filteredMarkers = useMemo(() => {
+    if (!markers || !currentLocation) return []
+
+    return markers.filter(
+      marker => marker.locationId === currentLocation.id
+    )
+  }, [markers, currentLocation])
 
   const locationImage = {
-      backgroundImage: `url(${locations[locationNumber]?.url})`,
+      backgroundImage: `url(${currentLocation?.url})`,
       backgroundSize: 'contain',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
@@ -59,13 +74,13 @@ const GameMap = () => {
     setLocationNumber(locationNumber - 1)
   }
 
-  const addNewPlayerMarker = () => {
-    dispatch(openModal({id: MODAL_CONTENT_TYPE.MARKER_FORM}))
+  const handleUpdateMarkerPosition = (id: string, x: number, y: number) => {
+    dispatch(updateMarkerPosition({ id, x, y }))
+    updateMarker({ id, x, y })
   }
 
-  const handleCloseAllModals = (event: React.MouseEvent<HTMLDivElement>) => {
-    event.stopPropagation()
-    dispatch(closeAllModals())
+  const addNewPlayerMarker = () => {
+    dispatch(openModal({id: MODAL_CONTENT_TYPE.MARKER_FORM}))
   }
 
   const deletePlayerMarker = (id: string) => {
@@ -75,14 +90,19 @@ const GameMap = () => {
     dispatch(closeModal(MODAL_CONTENT_TYPE.MARKER_MENU))
   }
 
+  const handleCloseAllModals = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.stopPropagation()
+    dispatch(closeAllModals())
+  }
+
   return (
     <div className='map__page'>
       <div className="map__page__characters">
         {isCharactersLoading 
           ? <MyLoader type={MY_LOADER_TYPE.CHARACTERS}/>
           : characters?.map(character => (
-            <div className="map__page__character">
-              <MapCharacter key={character.id} character={character}/>
+            <div className="map__page__character" key={character.id}>
+              <MapCharacter  character={character}/>
             </div>
           ))
         }
@@ -107,28 +127,30 @@ const GameMap = () => {
             >
               Вперёд
             </MyButton>
+            <MyButton
+              size={BUTTON_SIZE_TYPE.M}
+              theme={BUTTON_THEME_TYPE.DEFAULT}
+              onClick={addNewPlayerMarker}
+              width={BUTTON_WIDTH_TYPE.FULL}
+            >
+              Добавить Маркер
+            </MyButton>
           </div>
-          <MyButton
-            size={BUTTON_SIZE_TYPE.M}
-            theme={BUTTON_THEME_TYPE.DEFAULT}
-            onClick={addNewPlayerMarker}
-            width={BUTTON_WIDTH_TYPE.FULL}
-          >
-            Добавить Маркер
-          </MyButton>
         </div>
 
         <div className={classNames("buttons__and__map__main")} style={locationImage} onClick={handleCloseAllModals}>
           { isLocationLoading
             ? <MyLoader type={MY_LOADER_TYPE.IMAGE}/>
-            : markers?.map((marker, index) => (
+            : filteredMarkers?.map((marker) => (
                 <MyMapMarker
                   key={marker.id}
                   id={marker.id}
-                  index={index+1}
                   name={marker.name}
                   color={marker.color}
                   size={marker.size}
+                  x={marker.x}
+                  y={marker.y}
+                  onDragStop={handleUpdateMarkerPosition}
                 />
           ))}
         </div>
@@ -152,8 +174,10 @@ const GameMap = () => {
       ))}
 
       <MyModal size={MODAL_SIZE_TYPE.FULL_SCREEN} id={MODAL_CONTENT_TYPE.MARKER_FORM}>
-        <CharacterMarkerForm/>
+        <CharacterMarkerForm locationId={currentLocation?.id} />
       </MyModal>
+
+      <DicePanel />
     </div>
   )
 }

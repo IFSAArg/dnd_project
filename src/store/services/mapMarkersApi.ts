@@ -28,6 +28,16 @@ const mapMarkerApi = rtkApi.injectEndpoints({
         method: 'DELETE',
       }),
       invalidatesTags: (result, error, id) => [{type: 'mapMarkers', id}],
+    }),
+    updateMarker: build.mutation({
+      query: ({ id, ...patch }) => ({
+        url: `mapMarkers/${id}`,
+        method: 'PATCH',
+        body: patch,
+      }),
+      invalidatesTags: (result, error, { id }) => [
+        { type: 'mapMarkers', id },
+      ],
     })
   })
 })
@@ -35,3 +45,4 @@ const mapMarkerApi = rtkApi.injectEndpoints({
 export const useGetMarkers = mapMarkerApi.useGetMarkersQuery
 export const useAddMarker = mapMarkerApi.useAddMarkerMutation
 export const useDeleteMarker = mapMarkerApi.useDeleteMarkerMutation
+export const useUpdatePositionMarker = mapMarkerApi.useUpdateMarkerMutation

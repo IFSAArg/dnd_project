@@ -13,7 +13,7 @@
 
   .content {
     @include flex-direction-justify(column, flex-start);
-    width: 50%;
+    width: 25%;
     padding: 2rem;
     border-radius: 15px;
     border: 5px solid rgb(40, 29, 25);

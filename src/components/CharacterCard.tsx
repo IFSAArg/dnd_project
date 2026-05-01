@@ -18,8 +18,6 @@ const CharacterCard = (props: CharacterCardProps) => {
     return <div>Invalid character data</div>
   }
 
-  const {charHealth, charClass} = characterInfoCount
-
   return (
     <div
       className={`card__character character__id-${character.id}`}

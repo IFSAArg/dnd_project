@@ -1,0 +1,21 @@
+.dicePanel {
+  @include flex-direction-justify(column);
+  background: rgba(54, 38, 33, 0.95);
+  padding: 1rem;
+  border-radius: 12px;
+  border: 2px solid #281d19;
+  gap: 0.5rem;
+  width: 130px;
+  align-self: center;
+}
+
+//style={{
+//  background: 'rgba(54, 38, 33, 0.95)',
+//  padding: '1rem',
+//  borderRadius: '12px',
+//  border: '2px solid #281d19',
+//  display: 'flex',
+//  flexDirection: 'column',
+//  gap: '0.5rem',
+//  width: '130px',
+//  textAlign: 'center',
