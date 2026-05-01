@@ -1,4 +1,3 @@
-import React from "react";
 import About from "../pages/About";
 import CharacterPage from "../pages/CharacterPage";
 import Characters from "../pages/Characters";

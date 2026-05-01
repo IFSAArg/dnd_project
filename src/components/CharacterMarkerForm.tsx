@@ -68,29 +68,25 @@ const CharacterMarkerForm: FC<CharacterMarkerFormProps> = ({locationId}) => {
 
   return (
     <form className='character_marker_form'>
-      <div>
-        <MyInput 
-          value={markerState.name} 
-          type='text'
-          placeholder="Название маркера"
-          maxLength={4}
-          onChange={changeMarkerName}
-        />
-        <div className="character_marker_form_selects">
-          <MySelect 
-            value={markerState.color} 
-            onChange={changeMarkerColor} 
-            options={markerColorOptions} 
-            defaultOption='Персонаж или Цвет'
-          />
-          <MySelect 
-            value={markerState.size}
-            onChange={changeMarkerSize}
-            options={markerSizeOptions}
-            defaultOption='Размер'
-          />
-        </div>
-      </div>
+      <MyInput
+        value={markerState.name}
+        type='text'
+        placeholder="Название маркера"
+        maxLength={4}
+        onChange={changeMarkerName}
+      />
+      <MySelect
+        value={markerState.color}
+        onChange={changeMarkerColor}
+        options={markerColorOptions}
+        defaultOption='Персонаж или Цвет'
+      />
+      <MySelect
+        value={markerState.size}
+        onChange={changeMarkerSize}
+        options={markerSizeOptions}
+        defaultOption='Размер'
+      />
       <MyButton 
         onClick={addNewMarker} 
         size={BUTTON_SIZE_TYPE.L}

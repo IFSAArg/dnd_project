@@ -12,6 +12,7 @@
     "host": "concurrently \"npx vite --host --port 5173\" \"npx json-server db.json --host 0.0.0.0 --port 3000\""
   },
   "dependencies": {
+    "@3d-dice/dice-box": "^1.1.4",
     "@reduxjs/toolkit": "^2.2.6",
     "@types/toastr": "^2.1.43",
     "axios": "^1.7.2",
@@ -24,6 +25,7 @@
     "react-router-dom": "^6.24.0",
     "react-transition-group": "^4.4.5",
     "sass": "^1.77.8",
+    "three": "^0.184.0",
     "toastr": "^2.1.4",
     "uuid": "^10.0.0"
   },

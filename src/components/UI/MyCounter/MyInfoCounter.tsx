@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import { memo } from 'react'
 import cl from "./MyInfoCounter.module.scss"
 import { useUpdateCharacters } from '../../../store/services/characterApi'
 import { ICharacter } from '../../../types/characterTypes';

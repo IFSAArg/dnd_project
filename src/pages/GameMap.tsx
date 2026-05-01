@@ -16,6 +16,7 @@ import MyLoader, { MY_LOADER_TYPE } from '../components/UI/MyLoader/MyLoader'
 import CharacterMarkerForm from '../components/CharacterMarkerForm'
 import {getAllMarkers} from "../store/selectors/mapMarkerSelectors.ts";
 import {useSelector} from "react-redux";
+import DicePanel from "../components/DicePanel.tsx";
 
 const GameMap = () => {
   const dispatch = useAppDispatch()
@@ -29,6 +30,7 @@ const GameMap = () => {
   const {data: locations = [], isLoading: isLocationLoading} = useGetLocations(null)
   const [locationNumber, setLocationNumber] = useState<number>(0)
   const currentLocation = locations?.[locationNumber]
+
 
   useEffect(() => {
     if (!isLocalCharsData && characters) {
@@ -88,12 +90,10 @@ const GameMap = () => {
     dispatch(closeModal(MODAL_CONTENT_TYPE.MARKER_MENU))
   }
 
-
   const handleCloseAllModals = (event: React.MouseEvent<HTMLDivElement>) => {
     event.stopPropagation()
     dispatch(closeAllModals())
   }
-
 
   return (
     <div className='map__page'>
@@ -127,15 +127,15 @@ const GameMap = () => {
             >
               Вперёд
             </MyButton>
+            <MyButton
+              size={BUTTON_SIZE_TYPE.M}
+              theme={BUTTON_THEME_TYPE.DEFAULT}
+              onClick={addNewPlayerMarker}
+              width={BUTTON_WIDTH_TYPE.FULL}
+            >
+              Добавить Маркер
+            </MyButton>
           </div>
-          <MyButton
-            size={BUTTON_SIZE_TYPE.M}
-            theme={BUTTON_THEME_TYPE.DEFAULT}
-            onClick={addNewPlayerMarker}
-            width={BUTTON_WIDTH_TYPE.FULL}
-          >
-            Добавить Маркер
-          </MyButton>
         </div>
 
         <div className={classNames("buttons__and__map__main")} style={locationImage} onClick={handleCloseAllModals}>
@@ -176,6 +176,8 @@ const GameMap = () => {
       <MyModal size={MODAL_SIZE_TYPE.FULL_SCREEN} id={MODAL_CONTENT_TYPE.MARKER_FORM}>
         <CharacterMarkerForm locationId={currentLocation?.id} />
       </MyModal>
+
+      <DicePanel />
     </div>
   )
 }

@@ -16,8 +16,16 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
-    project: './tsconfig.json',
+    // project: './tsconfig.json',
   },
+  overrides: [
+    {
+      files: ['*.ts', '*.tsx'],
+      parserOptions: {
+        project: './tsconfig.json',
+      },
+    },
+  ],
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh'],
   rules: {
