@@ -11,11 +11,21 @@
   font-display: swap;
 }
 
+#dice-box {
+  position: fixed !important;
+  inset: 0;
+  width: 100vw !important;
+  height: 100vh !important;
+  pointer-events: none; // чтобы не ломал клики по UI
+  z-index: 9999;
+}
+
 body {
   background: url(../img/background.jpg) no-repeat center center;
   background-size: cover;
   font-family: 'CC Yuletide Log', 'Cinzel', 'Georgia', serif;
   font-weight: bold;
+  overflow: hidden;
 }
 
 #root {

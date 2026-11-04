@@ -2,7 +2,11 @@
   @include flex-direction-justify(column, space-between);
   height: 100%;
 
-  &_selects {
-    @include flex-direction-justify(row, space-between);
+  //&_selects {
+  //  @include flex-direction-justify(row, space-between);
+  //}
+
+  & * {
+    margin: 5px 0;
   }
 }

@@ -2,7 +2,7 @@ import {configureStore, ReducersMapObject} from '@reduxjs/toolkit'
 import charactersReducer from '../slices/charactersSlice'
 import modalReducer from '../slices/modalSlice'
 import mapMarkerReducer from '../slices/mapMarkersSlice'
-import {rtkApi} from "../../API/rtkApi.js";
+import {rtkApi} from "../../API/rtkApi.ts";
 import {StateSchema} from "./stateSchema";
 
 const rootReducers: ReducersMapObject<StateSchema> = {

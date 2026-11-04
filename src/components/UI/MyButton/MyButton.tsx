@@ -17,11 +17,6 @@ export enum BUTTON_THEME_TYPE {
   DEFAULT = 'default',
 }
 
-export interface IButtonDisabledFlag {
-  back: boolean;
-  forward: boolean;
-}
-
 interface MyButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   size: BUTTON_SIZE_TYPE;
@@ -30,13 +25,14 @@ interface MyButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
 }
 
 const MyButton: FC<MyButtonProps> = (props) => {
-  const {onClick, children, size, theme, width} = props
+  const {onClick, children, size, theme, width, ...rest} = props
 
   return (
-    <button 
+    <button
       className={classNames(cl.myButton, cl[size], cl[theme], cl[width])}
-      onClick={onClick}  
-      {...props}
+      {...rest}
+      onClick={onClick}
+      type="button"
     >
       {children}
     </button>

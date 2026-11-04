@@ -2,12 +2,12 @@
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  margin-top: 10px;
   width: 100%;
   padding: 10px 5px;
   border: 2px solid rgb(138, 104, 18);
   background-color: rgb(143, 110, 79);
   font-size: 1.5rem;
+  text-align: center;
 
   &:focus {
     border-color: goldenrod;

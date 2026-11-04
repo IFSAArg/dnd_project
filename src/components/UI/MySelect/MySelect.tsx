@@ -7,6 +7,7 @@ interface IOption {
 }
 
 interface MySelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
+  value: string;
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void,
   options: IOption[],
   defaultOption: string,
@@ -26,6 +27,6 @@ const MySelect: FC<MySelectProps> = ({onChange, options, defaultOption, value, .
       ))}
     </select>
   )
-}
+};
 
 export default memo(MySelect)
